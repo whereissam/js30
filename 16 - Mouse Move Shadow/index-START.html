@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Shadow</title>
+</head>
+<body>
+ 
+  <div class="hero">
+    <h1 contenteditable>🔥WOAH!</h1>
+  </div>
+
+  <style>
+  html {
+    color: black;
+    font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  }
+
+  h1 {
+    text-shadow: 10px 10px 0 rgba(0,0,0,1);
+    font-size: 100px;
+  }
+  </style>
+
+<script>
+  (function(){
+    const text = document.querySelector('h1')
+    document
+      .querySelector(".hero")
+      
+      .addEventListener('mousemove',function(e){
+        let {offsetX,offsetY} = e;
+        let length = 100;
+
+        if(e.target !== this){
+          offsetY += e.target.offsetLeft
+          offsetX += e.target.offsetTop
+        }
+        // console.log(e.target)
+        // console.log(offsetY,e.target.offsetHeight)
+        // console.log(e.target,this)
+        // console.log(e.target.offsetWidth)
+
+    
+         let lengthX = Math.floor((offsetX/ this.offsetWidth) *length) *2 - length;
+         let lengthY = Math.floor((offsetY / this.offsetHeight) *length) *2 - length;
+        // console.log(lengthX,lengthY)
+
+         text.style.textShadow = 
+         `${lengthX *-1}px ${lengthY *-1}px 5px red,
+         ${lengthX *-3}px ${lengthY*-3}px 5px rgb(37, 237, 187),
+          ${lengthX *-7}px ${lengthY*-7}px 5px rgb(37, 237, 187),
+         ${lengthX *-9}px ${lengthY*-9}px 5px rgb(190, 89, 234),
+         ${lengthX *-5}px ${lengthY*-5}px 5px rgb(209, 150, 102)`
+         
+    })
+  })()
+// (function(){
+//   const hero = document.querySelector('.hero');
+//   const text = hero.querySelector('h1');
+
+//   function shadow(e) {
+//     // const { offsetWidth, offsetHeight } = hero;
+//     let { offsetX, offsetY} = e;
+//     console.log(hero)
+//   }
+//     hero.addEventListener('mousemove', shadow);
+//   })()
+
+  
+</script>
+</body>
+</html>
